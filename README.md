@@ -1,3 +1,10 @@
+Overview
+--------
+
+This repository contains code that create dataset for my work in progress called Investment Growth and Life Cycle, which I analyze how expected investment growth varies across differente firms life cycle.
+
+How to Run the Code
+-------------------
 Open start.R in your R studio
 
 CORE PRINCIPLE:
