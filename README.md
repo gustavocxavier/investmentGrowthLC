@@ -1,7 +1,7 @@
 Overview
 --------
 
-This repository contains code that create dataset for my work in progress called Investment Growth and Life Cycle, which I analyze how expected investment growth varies across differente firms life cycle.
+This repository contains code to create the dataset for my work in progress called Expected Investment Growth and Firm Life Cycle, which I analyze how expected investment growth varies across differente firms life cycle.
 
 How to Run the Code
 -------------------
