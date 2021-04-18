@@ -1,7 +1,7 @@
 Overview
 --------
 
-This repository contains code to create the dataset for my work in progress called Expected Investment Growth and Firm Life Cycle, which I analyze how expected investment growth varies across differente firms life cycle.
+This repository contains code to create the dataset for my work in progress called `Expected Investment Growth and Firm Life Cycle`, I analyze how expected investment growth varies across differente firms life cycle. You can either clone this repository with git, or download the entire content as a zip file by clicking on the `Download ZIP` button on `Code` menu above.
 
 How to Run the Code
 -------------------
