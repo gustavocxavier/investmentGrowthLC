@@ -200,7 +200,8 @@ ccm_a2 %>% select(ia:at, -ia1) %>% summary
 #                             EIG, -(LCintro:LC))
 
 # TODO: Change line above: readRDS("~/Data/EIG/EIG_ENet_serie.rds")
-EIG_elnet <- readRDS("~/Data/EIG/EIG_ENet_serie.rds") %>%
+# EIG_elnet <- readRDS("~/Data/EIG/EIG_ENet_serie.rds") %>%
+EIG_elnet <- readRDS("2_pipeline/2_out/3a_EIG_ENet_serie.rds") %>%
   select(gvkey, datadate, IGt1, EIG) %>% 
   arrange(datadate) %>% as.data.table
 EIG_elnet[, cor(IGt1, EIG), by=year(datadate)] %>% summarise(mean(V1))
