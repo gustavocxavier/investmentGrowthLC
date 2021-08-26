@@ -258,6 +258,8 @@ EIG_elnet[, cor(IGt1, EIG), by=year(datadate)] %>% summarise(mean(V1))
 EIG_elnet %>% filter(datadate=="2012-01-31")
 EIG_elnet[complete.cases(IGt1, EIG)]
 ccm_a3 <- ccm_a2 %>% inner_join(EIG_elnet, by = c("gvkey", "datadate"))
+# foreign::write.dta(ccm_a2, file = "C:\\Dropbox\\Code\\Stata\\xtewreg\\ccm_a2.dta")
+# foreign::write.dta(ccm_a3, file = "C:\\Dropbox\\Code\\Stata\\xtewreg\\ccm_a3.dta")
 
 model4 <- plm(d1_ia ~ LCintro + LCgrowth + LCshadec + CF + q + dROE + log(sale) + Leverage + log(at), data = ccm_a3, model='pooling', index=c('permno', 'year'))
 model5 <- plm(EIG ~ LCintro + LCgrowth + LCshadec + CF + q + dROE + log(sale) + Leverage + log(at), data = ccm_a3, model='pooling', index=c('permno', 'year'))
