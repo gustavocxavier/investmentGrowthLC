@@ -1,4 +1,12 @@
-Open start.R in your R studio
+Overview
+--------
+
+This repository contains code to create the dataset for my work in progress called `Expected Investment Growth and Firm Life Cycle`, which intend to analyze how expected investment growth varies across differente firms life cycle. To reproduce, you can either clone this repository with git, or download the entire content as a zip file by clicking on the `Download ZIP` button on `Code` menu above.
+
+How to Run the Code
+-------------------
+Open `start.R` in your R studio. The code creates some subfolders where it will store temporary data for each step, so that you don't have to run the entire
+code more than once. 
 
 CORE PRINCIPLE:
 --------------
@@ -15,6 +23,6 @@ Anout 2_pipeline:
 
 - 2_out contains files that I save with the intention of loading them in a future code file. These are usually the “end-products” of the current code file.
 
-------
-
-Based on Ties de Tok tips: https://arc.eaa-online.org/blog/how-keep-your-projects-organized-part-1-folder-structure
+Additional notes
+----------------
+- I structured this code based on [Ties de Tok tips](https://arc.eaa-online.org/blog/how-keep-your-projects-organized-part-1-folder-structure)
