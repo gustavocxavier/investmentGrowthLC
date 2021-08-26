@@ -245,10 +245,11 @@ print(xtable(mcor[,c(7:11,11)]), type="latex")
 
 
 # Estimate Models --------------------------------------------------------------
-
-model1 <- plm(ia    ~ LCintro + LCgrowth + LCshadec + CF + q + dROE + log(sale) + Leverage + log(at), data = ccm_a2, model='pooling', index=c('permno', 'year'))
-model2 <- plm(ia1   ~ LCintro + LCgrowth + LCshadec + CF + q + dROE + log(sale) + Leverage + log(at), data = ccm_a2, model='pooling', index=c('permno', 'year'))
-model3 <- plm(d1_ia ~ LCintro + LCgrowth + LCshadec + CF + q + dROE + log(sale) + Leverage + log(at), data = ccm_a2, model='pooling', index=c('permno', 'year'))
+# plm_model= "within"
+plm_model="pooling"
+model1 <- plm(ia    ~ LCintro + LCgrowth + LCshadec + CF + q + dROE + log(sale) + Leverage + log(at), data = ccm_a2, model=plm_model, index=c('permno', 'year'))
+model2 <- plm(ia1   ~ LCintro + LCgrowth + LCshadec + CF + q + dROE + log(sale) + Leverage + log(at), data = ccm_a2, model=plm_model, index=c('permno', 'year'))
+model3 <- plm(d1_ia ~ LCintro + LCgrowth + LCshadec + CF + q + dROE + log(sale) + Leverage + log(at), data = ccm_a2, model=plm_model, index=c('permno', 'year'))
 
 EIG_elnet <- readRDS("2_pipeline/2_out/3a_EIG_ENet_serie.rds") %>%
   select(gvkey, datadate, IGt1, EIG) %>% 
@@ -261,8 +262,8 @@ ccm_a3 <- ccm_a2 %>% inner_join(EIG_elnet, by = c("gvkey", "datadate"))
 # foreign::write.dta(ccm_a2, file = "C:\\Dropbox\\Code\\Stata\\xtewreg\\ccm_a2.dta")
 # foreign::write.dta(ccm_a3, file = "C:\\Dropbox\\Code\\Stata\\xtewreg\\ccm_a3.dta")
 
-model4 <- plm(d1_ia ~ LCintro + LCgrowth + LCshadec + CF + q + dROE + log(sale) + Leverage + log(at), data = ccm_a3, model='pooling', index=c('permno', 'year'))
-model5 <- plm(EIG ~ LCintro + LCgrowth + LCshadec + CF + q + dROE + log(sale) + Leverage + log(at), data = ccm_a3, model='pooling', index=c('permno', 'year'))
+model4 <- plm(d1_ia ~ LCintro + LCgrowth + LCshadec + CF + q + dROE + log(sale) + Leverage + log(at), data = ccm_a3, model=plm_model, index=c('permno', 'year'))
+model5 <- plm(EIG ~ LCintro + LCgrowth + LCshadec + CF + q + dROE + log(sale) + Leverage + log(at), data = ccm_a3, model=plm_model, index=c('permno', 'year'))
 
 # Adjust standard errors
 robust.se <- function(x) {
@@ -293,8 +294,10 @@ stargazer(model1, model2, model3, model4, model5,
           column.separate = c(1,1,2,1),
           font.size="small",
           style="qje", omit.stat="f",
-          df = FALSE, intercept.bottom = FALSE,
-          type="latex", out = "3_output/results/3b_model.txt")
+          # type="text",
+          type="latex", out = "3_output/results/3b_model.txt",
+          # type="latex", out = "3_output/results/3b_model_fe.txt",
+          df = FALSE, intercept.bottom = FALSE)
  
 # Descriptive by Life-Cycle ----------------------------------------------------
 ccm_a3 %>% group_by(LC) %>%
